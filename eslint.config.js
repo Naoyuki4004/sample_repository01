@@ -1,15 +1,20 @@
-const {
-    defineConfig,
-} = require("eslint/config");
-
+const presetReactTypeScriptPrettier = require("./flat/presets/react-typescript-prettier.js");
 const globals = require("globals");
 
-module.exports = defineConfig([{
-    "extends": "@cybozu/eslint-config/presets/node-prettier",
-
+/**
+ * @type { import("eslint").Linter.Config[] }
+ */
+module.exports = [
+  ...presetReactTypeScriptPrettier,
+  {
     languageOptions: {
-        globals: {
-            ...globals.mocha,
-        },
+      globals: {
+        ...globals.node,
+        ...globals.mocha,
+      },
     },
-}]);
+  },
+  {
+    ignores: ["test/fixtures/*"],
+  },
+];
