@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "GitHubActionsのテスト",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "lint": "eslint .",
     "test": "mocha"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^11.2.2"
+  }
 }
