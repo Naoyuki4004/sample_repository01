@@ -1,7 +1,6 @@
 {
   "name": "fizz-buzz",
   "version": "1.0.0",
-  "description": "GitHubActionsのテスト",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
@@ -9,9 +8,10 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@cybozu/eslint-config": "^24.0.0",
-    "eslint": "^9.26.0",
+    "@cybozu/eslint-config": "^23.0.0",
+    "eslint": "^8.57.1",
     "mocha": "^11.2.2",
-    "prettier": "^3.5.3"
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3"
   }
 }
