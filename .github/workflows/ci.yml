@@ -3,6 +3,23 @@ on: push
 
 jobs:
   unit-test:
+
+    steps:
+
+      - name: Get NPM cache directory
+        id: npm-cache
+        run: |
+          echo "::set-output name=dir::$(npm get cache)"
+      - name: Cache NPM
+        uses: actions/cache@v3.0.0
+        with:
+         path: ${{ steps.npm-cache.outputs.dir }}
+         key: ${{ runner.os}}--node-${{ hashFiles('**/package-lock.json') }}
+         restore-keys: |
+           ${{ runner.os}}--node-
+      - name: Install dependencies
+        run: npm ci
+
     name: Unit Test
     strategy:
       matrix:
@@ -26,7 +43,23 @@ jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
+
     steps:
+
+      - name: Get NPM cache directory
+        id: npm-cache
+        run: |
+          echo "::set-output name=dir::$(npm get cache)"
+      - name: Cache NPM
+        uses: actions/cache@v3.0.0
+        with:
+         path: ${{ steps.npm-cache.outputs.dir }}
+         key: ${{ runner.os}}--node-${{ hashFiles('**/package-lock.json') }}
+         restore-keys: |
+           ${{ runner.os}}--node-
+      - name: Install dependencies
+        run: npm ci
+
       - name: Checkout
         uses: actions/checkout@v2
       - name: Set Node.js 18.x
